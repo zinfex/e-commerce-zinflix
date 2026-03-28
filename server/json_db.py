@@ -16,4 +16,15 @@ class JsonDB(BaseModel):
         f = open(self.path, "w")
         f.write(json.dumps(data))
         f.close()
+
+    def delete(self, product_id):
+        data = self.read()
+        for product in data['products']:
+            if product['id'] == product_id:
+                data['products'].remove(product)
+                f = open(self.path, "w")
+                f.write(json.dumps(data))
+                f.close()
+                return {"message": "Produto deletado com sucesso!"}
+        return {"error": "Produto não encontrado"}
     

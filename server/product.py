@@ -8,10 +8,3 @@ class Product(BaseModel):
     image: str
     description: str
     category: str
-
-
-class Vendas(BaseModel):
-    id: int
-    id_produto: int
-    price: float
-    quant: int
